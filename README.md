@@ -12,6 +12,7 @@ A console logging plugin using websockets.
     │   └── ... .zip
 	├── WebProt.exe
 	:
+	├── Logging.io.dll
 	└── Plugable.io.dll
 	
 ### Dev structure
@@ -23,6 +24,7 @@ A console logging plugin using websockets.
     │   └── uHttpSharp
     │   └── WebsocketSharp
     │   └── ...
+	├── Logging.io
 	├── Plugable.io
 	:
 	└── WebProt
