@@ -2,5 +2,5 @@
 obj/
 bin/
 packages/
-Plugins/WebProt.Provider.Plugin.Console/WebProt.Provider.Plugin.Console_dev.csproj
-Plugins/WebProt.Provider.Plugin.Console/WebProt.Provider.Plugin.Console_dev.sln
+WebProt.Provider.Plugin.Console_dev.csproj
+WebProt.Provider.Plugin.Console_dev.sln
