@@ -4,29 +4,43 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
-using uhttpsharp.Helpers;
-using uhttpsharp.Interfaces;
+using System.Threading.Tasks;
+using uhttpsharp;
 using WebSocketSharp;
 using WebSocketSharp.Server;
 
 namespace WebProt.Provider.Plugin.Console
 {
-    public class WebExtension : WebSocketBehavior, IPlugable, IProtocolPlugin, IRoutable
+    public class WebExtension : WebSocketBehavior, IPlugable, IProtocolPlugin
     {
-        public void Initialize(string[] args, dynamic parent, Router router) 
+        public void Initialize(string[] args, dynamic parent) 
         {
             AppDomain.CurrentDomain.AssemblyResolve += ResolveAssembly;
         }
 
         public void Initialize(string[] args, PluginsManager parent, dynamic server)
         {
-            AppDomain.CurrentDomain.AssemblyResolve += ResolveAssembly;
-            server.AddWebSocketService<WebExtension>("/console");
+            if (server != null)
+            {
+                Type type = ((object)server).GetType();
+                if (type != null)
+                {
+                    if (type.Name == "Router")
+                    {
+
+                    }
+                    else
+                    {
+                        AppDomain.CurrentDomain.AssemblyResolve += ResolveAssembly;
+                        server.AddWebSocketService<WebExtension>("/console");
+                    }
+                }
+            }
         }
 
-        public Dictionary<string, RouteAction> GetRoutes()
+        public Dictionary<string, Func<IHttpContext, Dictionary<string, string>, Func<Task>, Task>> GetRoutes()
         {
-            var list = new Dictionary<string, RouteAction>();
+            var list = new Dictionary<string, Func<IHttpContext, Dictionary<string, string>, Func<Task>, Task>>();
 
             return list;
         }
