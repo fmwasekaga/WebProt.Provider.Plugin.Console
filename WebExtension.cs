@@ -55,19 +55,6 @@ namespace WebProt.Provider.Plugin.Console
             {
 
             }
-
-            /*foreach (IWebSocketSession session in Sessions.Sessions)
-            {
-                if (session.ID == ID) continue;
-                else
-                {
-                    if (e.IsText) session.Context.WebSocket.Send(e.Data);
-                    else if (e.IsBinary)
-                    {
-
-                    }
-                }
-            }*/
         }
 
         #region getVersion
